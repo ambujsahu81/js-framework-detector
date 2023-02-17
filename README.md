@@ -1,7 +1,7 @@
 # js-framework-detector
 Detects which JS Framework is used in a Website.
 
-This one is relatively small library which can detect some of the mordern Js framework used in a website.
+This library relatively small and can detect some of the mordern Js framework used in a website.
 
 It can be used within any node application or extension's content script.
 
