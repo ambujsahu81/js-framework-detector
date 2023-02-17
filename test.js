@@ -59,6 +59,6 @@ test.serial('should detect js framework as WordPress', async t => {
 // Random website tests
 
 test.serial('should detect js framework as jquery for azure devops', async t => {
-	const frameworkArray = await detectJsFramework('https://azure.microsoft.com/en-us/products/devops');
+	const frameworkArray = await detectJsFramework('https://wiredelta.com/');
 	t.is(frameworkArray[0].name, 'jquery');
 });

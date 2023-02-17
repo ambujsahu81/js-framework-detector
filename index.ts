@@ -46,7 +46,7 @@ const detect = (): JsFramework => {
 			break;
 
 		// React
-		case Object.prototype.hasOwnProperty.call(window, 'React'):
+		case Boolean(Object.prototype.hasOwnProperty.call(window, 'React') ?? document.querySelector('#react-root') ?? document.querySelector('*[data-reactroot]')):
 			frameworkList.push({
 				name: 'react',
 				url: 'https://reactjs.org/',
