@@ -1,26 +1,114 @@
-import axios from 'axios';
-// Import {load} from 'cheerio';
+import puppeteer from 'puppeteer';
 
-const detect = (pageHtml: string): string => {
-	const jsFramework: string[] = [];
-	// Const $ = load(pageHtml);
+type JsFramework = Array<{name: string; url: string; npm: string; version: string}>;
 
+const detect = (): JsFramework => {
+	let frameworkList: JsFramework = [];
 	switch (true) {
-		case pageHtml.includes('__remixContext'): jsFramework.push('remix');
+		// JQuery
+		case Object.prototype.hasOwnProperty.call(window, 'jQuery'):
+			frameworkList.push({
+				name: 'jquery',
+				url: 'http://jquery.com',
+				npm: 'https://www.npmjs.com/package/jquery',
+				version: 'unknown',
+			});
 			break;
-		default: jsFramework.push('no case detected');
+
+		// Next.js
+		case Object.prototype.hasOwnProperty.call(window, '__NEXT_DATA__'):
+			frameworkList.push({
+				name: 'next',
+				url: 'https://nextjs.org/',
+				npm: 'https://www.npmjs.com/package/next',
+				version: 'unknown',
+			});
+			break;
+
+		// Remix
+		case Object.prototype.hasOwnProperty.call(window, '__remixContext'):
+			frameworkList.push({
+				name: 'remix',
+				url: 'https://remix.run/',
+				npm: 'https://www.npmjs.com/package/remix',
+				version: 'unknown',
+			});
+			break;
+
+		// Angular
+		case Boolean(window.document.querySelector('[ng-version]')):
+			frameworkList.push({
+				name: 'angular',
+				url: 'https://angular.io/',
+				npm: 'https://www.npmjs.com/package/@angular/core',
+				version: window.document.querySelector('[ng-version]')!.getAttribute('ng-version') ?? 'unknown',
+			});
+			break;
+
+		// React
+		case Object.prototype.hasOwnProperty.call(window, 'React'):
+			frameworkList.push({
+				name: 'react',
+				url: 'https://reactjs.org/',
+				npm: 'https://www.npmjs.com/package/react',
+				version: 'unknown',
+			});
+			break;
+
+		// Ember.js
+		case Object.prototype.hasOwnProperty.call(window, 'Ember'):
+			frameworkList.push({
+				name: 'emberjs',
+				url: 'https://emberjs.com/',
+				npm: 'https://www.npmjs.com/package/ember-source',
+				version: 'unknown',
+			});
+			break;
+
+		// Vue
+		case Object.prototype.hasOwnProperty.call(window, '__VUE__'):
+			frameworkList.push({
+				name: 'vue',
+				url: 'https://vuejs.org/',
+				npm: 'https://www.npmjs.com/package/vue',
+				version: 'unknown',
+			});
+			break;
+
+		// Gatsby
+		case Boolean(document.querySelector('#___gatsby')):
+			frameworkList.push({
+				name: 'gatsby',
+				url: 'https://www.gatsbyjs.org/',
+				npm: 'https://www.npmjs.com/package/gatsby',
+				version: 'unknown',
+			});
+			break;
+
+		// Nuxt.js
+		case Object.prototype.hasOwnProperty.call(window, '__NUXT__'):
+			frameworkList.push({
+				name: 'nuxt',
+				url: 'https://nuxtjs.org/',
+				npm: 'https://www.npmjs.com/package/nuxt',
+				version: 'unknown',
+			});
+			break;
+
+		// WordPress
+		case Boolean(document.querySelector('link[rel="https://api.w.org/"]')) || document.querySelectorAll('link[href*="wp-includes"], script[src*="wp-includes"]').length > 0:
+			frameworkList.push({
+				name: 'wordpress',
+				url: 'https://wordpress.org/',
+				npm: '',
+				version: 'unknown',
+			});
+			break;
+
+		default: frameworkList = [];
 	}
 
-	return jsFramework.join(',');
-};
-
-const scrapper = async (url: string): Promise<string> => {
-	try {
-		const reponse = await axios.get(url);
-		return reponse.data as string;
-	} catch {
-		throw new TypeError(`Error: failed to read data of ${url}`);
-	}
+	return frameworkList;
 };
 
 const isValidHttpUrl = (url: string): boolean => {
@@ -32,18 +120,15 @@ const isValidHttpUrl = (url: string): boolean => {
 	}
 };
 
-const detectJsFramework = async (url: string): Promise<string> => {
+const detectJsFramework = async (url: string): Promise<JsFramework> => {
 	if (!isValidHttpUrl(url)) {
 		throw new TypeError(`Error: ${url} is not a a valid HTTP URL`);
 	}
 
-	const pageHtml: string = await scrapper(url);
-	if (!pageHtml) {
-		throw new TypeError(`Error: Enable to detect js framework of given url ${url}`);
-	}
-
-	const jsFramework: string = detect(pageHtml);
-	return jsFramework;
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto(url);
+	return page.evaluate(detect);
 };
 
 export default detectJsFramework;
