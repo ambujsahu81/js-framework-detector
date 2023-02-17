@@ -128,7 +128,9 @@ const detectJsFramework = async (url: string): Promise<JsFramework> => {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto(url);
-	return page.evaluate(detect);
+	const frameworkList: JsFramework = await page.evaluate(detect);
+	await browser.close();
+	return frameworkList;
 };
 
 export default detectJsFramework;
