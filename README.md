@@ -7,7 +7,7 @@ It can be integrated smoothly with the following environments
 - Any environment supporting JavaScript (e.g. Node.js or React Native)
 - Any Chrome and Firefox-compatible browser extension.
 
-Try the live [demo]()
+Try the live [demo](https://ambujsahu81.github.io/js-framework-detector/)
 
 ## Install
 
