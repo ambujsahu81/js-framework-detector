@@ -1,6 +1,6 @@
 {
 	"name": "js-framework-detector",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "Detects which JS Framework is used in a website.",
 	"keywords": [
 		"js framework",
@@ -15,7 +15,9 @@
 	"module": "index.js",
 	"files": [
 		"index.js",
-		"index.d.ts"
+		"index.d.ts",
+		"library.d.ts",
+		"library.js"
 	],
 	"scripts": {
 		"build": "tsc",

@@ -21,7 +21,7 @@ npm install js-framework-detector
 import detectJsFramework from "js-framework-detector";
 
 const frameworkArray = await detectJsFramework('https://www.producthunt.com/');
-console.log(frameworkList); 
+console.log(frameworkArray); 
 // output
 [
 {
