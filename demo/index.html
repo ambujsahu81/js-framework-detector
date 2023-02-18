@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            font-size: 1.1rem;
+            font-family: math;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            background: cadetblue;
+            color: white;
+            width: -webkit-fill-available;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 0.5rem;
+        }
+
+        input[type="search" i] {
+            width: 30rem;
+            height: 2rem;
+        }
+
+        .container {
+            padding: 3rem;
+        }
+
+        span {
+            font-size: 1.7rem;
+            font-weight: 700;
+            padding-right: 0.5rem;
+        }
+        .result {
+            background-color: #f3f3f6;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Js-Framework-Detector
+            </h1>
+        </div>
+        <div class="container">
+            <p>
+                Enter any website url to see which js framework is used in that Website.
+            </p>
+            <label><span>URL:</span> <input type="search" placeholder=" try https://www.npmjs.com/" autocomplete="off"
+                    autocorrect="off" list="url-examples"></label>
+            <div class="result">
+                <P>result json here</P>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
