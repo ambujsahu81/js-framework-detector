@@ -1,9 +1,0 @@
-{
-	"extends": "@sindresorhus/tsconfig",
-	"compilerOptions": {
-		"target": "es2021"
-	},
-	"files": [
-		"index.ts"
-	]
-}
