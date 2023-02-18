@@ -20,27 +20,34 @@ npm install js-framework-detector
 ```js
 import detectJsFramework from "js-framework-detector";
 
-const frameworkArray = await detectJsFramework('https://material.angular.io/');
-console.log("frameworkArray"); 
+const frameworkArray = await detectJsFramework('https://www.producthunt.com/');
+console.log(frameworkList); 
 // output
 [
-  {
-    name: 'angular',
-    url: 'https://angular.io/',
-    npm: 'https://www.npmjs.com/package/@angular/core',
-    version: '15.1.1'
-  }
+{
+    name: 'next',
+    url: 'https://nextjs.org/',
+    npm: 'next',
+    version: '13.0.6'
+  },
 ]
 
-const frameworkArray = await detectJsFramework('https://wiredelta.com/');
+const frameworkArray = await detectJsFramework('https://reactjs.org/');
 console.log("frameworkArray"); 
 // output
 [
   {
-    name: 'wordpress',
-    url: 'https://wordpress.org/',
-    npm: '',
-    version: 'unknown'
+    name: 'react',
+    url: 'https://reactjs.org/',
+    npm: 'react',
+    version: '17.0.2'
+  },
+  { name: 'gatsby', url: 'https://www.gatsbyjs.org/', npm: 'gatsby' },
+  {
+    name: 'corejs',
+    url: 'https://github.com/zloirock/core-js',
+    npm: 'core-js',
+    version: 'core-js-global@3.6.5'
   }
 ]
 ```
@@ -53,7 +60,6 @@ console.log("frameworkArray");
 - Angular
 - React
 - Ember.js
-- Vue
 - Gatsby
 - Nuxt.js
 - WordPress

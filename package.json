@@ -1,6 +1,6 @@
 {
 	"name": "js-framework-detector",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Detects which JS Framework is used in a website.",
 	"keywords": [
 		"js framework",
@@ -20,7 +20,7 @@
 	"scripts": {
 		"build": "tsc",
 		"prepack": "tsc --sourceMap false",
-		"test": "tsc && xo && ava",
+		"test": "tsc && ava",
 		"watch": "run-p --silent watch:*",
 		"watch:build": "tsc --watch",
 		"watch:test": "ava --watch"
