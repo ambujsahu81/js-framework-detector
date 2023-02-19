@@ -21,6 +21,7 @@ const display = (toShowData) => {
     let newUl = '<span class="largefont extra-padding">Framework detected</span><br/>';   
     if (toShowData.length < 1) {
         document.getElementById('result').innerHTML = '<span class="largefont extra-padding">Failed to detect any framework</span><br/>';
+        return;
     } 
     for ( let element of toShowData) {
         const li = `<ul>
