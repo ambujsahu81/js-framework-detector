@@ -3,6 +3,20 @@
 const $ = (selector) => document.querySelector(selector);
 const searchInput = $('#search-input');
 
+const makeItResponsive = () => {
+    const deviceWidth = window.screen.width;
+    let widthOfContent = document.getElementById('container');
+    switch(true) {
+       case deviceWidth >= 1366: widthOfContent.style.width = '45%';break;
+       case deviceWidth >= 1266: widthOfContent.style.width = '70%';break;
+       case deviceWidth >= 1150: widthOfContent.style.width = '75%';break;
+       case deviceWidth >= 1074: widthOfContent.style.width = '80%';break;
+       case deviceWidth >= 820:  widthOfContent.style.width = '85%';break;
+       case deviceWidth >= 600:  widthOfContent.style.width = '90%';break;
+       default : widthOfContent.style.width = '73%';
+    }
+}
+
 const isValidHttpUrl = (url) => {
     try {
         const newUrl = new URL(url);
@@ -59,3 +73,4 @@ const fetchFrameworkList = async (url) => {
 }
 
 searchInput.addEventListener('input', (e) => {fetchFrameworkList(e.target.value)});
+makeItResponsive();

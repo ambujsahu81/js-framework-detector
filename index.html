@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,33 +30,29 @@
         }
 
         input {
-            width: 30rem;
+            width: 76%;
             height: 2rem;
         }
-
         .container {
             padding: 3rem;
         }
-
         span {
             font-size: 1.7rem;
             font-weight: 700;
             padding-right: 0.5rem;
         }
-
         .result {
             background-color: #f3f3f6;
             padding: 1rem;
             margin-top: 1rem;
+            min-height: 35vh;
         }
-
         .error {
             font-size: 1rem;
             color: red;
             font-weight: 500;
             display: none;
         }
-
         ul {
             list-style-type: none;
         }
@@ -76,7 +71,7 @@
             <h1>Js-Framework-Detector
             </h1>
         </div>
-        <div class="container">
+        <div class="container" id='container'>
             <p>
                 Enter any website url to see which js framework is used in that Website.
             </p>
