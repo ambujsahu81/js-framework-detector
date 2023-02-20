@@ -1,5 +1,3 @@
-
-
 const $ = (selector) => document.querySelector(selector);
 const searchInput = $('#search-input');
 
@@ -45,6 +43,7 @@ const display = (toShowData) => {
         <li>version: ${element.version}</li></ul> <br/>`
         newUl += li;
     }
+    document.getElementById('Error').style.display = 'none'
     document.getElementById('result').innerHTML = newUl;
     toShowData = '';
 }
@@ -53,7 +52,7 @@ const handleError = (error) => { $('#Error').textContent = `Error: '${error}'`; 
 
 const fetchFrameworkList = async (url) => {
     if (isValidHttpUrl(url)) {
-        $('#Error').style.display = 'none'
+        document.getElementById('Error').style.display = 'none'
         display('...loading please be patient...')
         try {
             const response = await fetch(`https://63f235a5eeaea5715f8d2291--ooogh.netlify.app/.netlify/functions/api/frameworkdetector?url=${url}`)
