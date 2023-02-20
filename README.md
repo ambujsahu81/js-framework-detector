@@ -1,6 +1,7 @@
-# <img width="438" align="right" src="https://user-images.githubusercontent.com/118078892/219959419-e94051e2-9a0f-4fdd-a262-1c5e6394459f.png"> Js-Framework-Detector
+# <img width="438" align="right" src="https://user-images.githubusercontent.com/118078892/220064576-09a86ea4-c830-456e-9a12-def69fbfe896.png"> Js-Framework-Detector
 
 > Detects which JS Framework is used in a Website.
+
 
 It can be integrated smoothly with the following environments 
 
