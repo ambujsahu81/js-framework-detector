@@ -37,6 +37,7 @@
 		}
 	},
 	"dependencies": {
+		"browser-or-node": "^2.1.1",
 		"puppeteer": "^19.7.1",
 		"typed-query-selector": "^2.6.1"
 	},

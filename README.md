@@ -65,7 +65,6 @@ console.log("frameworkArray");
 - Nuxt.js
 - WordPress
 
-## Related
+## Contributing
 
-
-- [Library-Detector-for-Chrome](https://github.com/johnmichel/Library-Detector-for-Chrome) -The Library Detector extension discovers which JavaScript libraries are being utilized on webpages
+If you have suggestions you can open an issue, or even create a pull request! It will be reviewd as soon as possible. Thank you!

@@ -1,3 +1,4 @@
+import { isBrowser } from 'browser-or-node';
 import puppeteer from 'puppeteer';
 import {libraries, LibraryDetector} from './library.js'
 
@@ -34,6 +35,13 @@ const detectJsFramework = async (url: string): Promise<JsFramework> => {
 		throw new TypeError(`Error: ${url} is not a a valid HTTP URL`);
 	}
 
+	if (isBrowser) {
+        // The detection strategy for extension 
+        const frameworkList = detect(libraries);
+        return frameworkList;
+    }
+    // The detection strategy for any node application
+	
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto(url);
